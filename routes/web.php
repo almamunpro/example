@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
 Route::get('/', function(){
-    $jobs = Job::all();
 });
 
 
@@ -18,8 +17,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/jobs', function ()  {
+    $jobs = Job::with('employer')->get();
+    // $jobs = Job::all();
+
     return view('jobs',
-    [ 'jobs' => Job::all()
+    [ 'jobs' => $jobs
     ]);
 });
 Route::get('/jobs/{id}', function ($id)  {
