@@ -17,7 +17,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/jobs', function ()  {
-    $jobs = Job::with('employer')->get();
+    $jobs = Job::with('employer')->cursorPaginate(3);
     // $jobs = Job::all();
 
     return view('jobs',
