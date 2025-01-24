@@ -1,6 +1,7 @@
 <x-layout>
     <x-slot:heading>
          Jobs
+
     </x-slot:heading>
 
     <!-- Your content -->
