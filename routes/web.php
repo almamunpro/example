@@ -62,7 +62,7 @@ Route::get('/jobs/{id}/edit', function ($id)  {
     return view('jobs.edit', ['job' => $job]);
 });
 
-Route::patch('/jobs/index/{id}/edit', function ($id)  {
+Route::patch('/jobs/index/{id}', function ($id)  {
     // validate
     request()->validate([
         'title' => ['required', 'min:3'],
@@ -80,11 +80,11 @@ Route::patch('/jobs/index/{id}/edit', function ($id)  {
         'salary' => request('salary'),
     ]);
     //and persist
-    return redirect('/jobs/index '. $job ->id);
+    return redirect('/jobs/'.$job ->id);
 
 });
 // destroy
-Route::delete('/jobs/{id}/edit', function ($id)  {
+Route::delete('/jobs/{id}', function ($id)  {
     // authorize (On Hold)
 
     //delete the job
