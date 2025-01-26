@@ -18,7 +18,7 @@ Route::get('/contact', function () {
 });
 
 
-
+// index
 Route::get('/jobs/index', function ()  {
     $jobs = Job::with('employer')->latest()->simplePaginate(3);
     // $jobs = Job::all();
@@ -28,15 +28,19 @@ Route::get('/jobs/index', function ()  {
     ]);
 });
 
+// create
 Route::get('/jobs/create', function(){
     return view('jobs.create');
 });
 
+// show
 Route::get('/jobs/{id}', function ($id)  {
         $job = Job::find($id);
         return view('jobs.show', ['job' => $job]);
 });
 
+
+// Store
 Route::post('/jobs/index', function () {
 
     request()->validate([
@@ -50,4 +54,22 @@ Route::post('/jobs/index', function () {
         'employer_id'=>1
     ]);
     return redirect('/jobs/index');
+});
+
+// Update
+// Route::patch('/jobs/{id}/edit', function ($id)  {
+//     $job = Job::find($id);
+//     return view('jobs.edit', ['job' => $job]);
+// });
+Route::patch('/jobs/{id}/edit', function ($id)  {
+    // validate
+    //authorize (ON hold)
+    //update the job
+    //and persist
+
+});
+// destroy
+Route::delete('/jobs/{id}/edit', function ($id)  {
+    $job = Job::find($id);
+    return view('jobs.edit', ['job' => $job]);
 });
