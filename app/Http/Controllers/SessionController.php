@@ -31,4 +31,8 @@ class SessionController extends Controller
         // redirect to somewhere
         return redirect('/jobs');
     }
+    public function destroy(){
+        Auth::logout();
+        return redirect('/');
+    }
 }
